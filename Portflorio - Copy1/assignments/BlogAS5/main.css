@@ -1,0 +1,14 @@
+body{
+    background-color: rgb(148, 216, 228);
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-top: 10%;
+
+}
+.header{
+    padding: 10%;
+    border: 2px solid rgb(6, 58, 23);
+    margin: auto;
+    width: 30%;
+    height: 100px
+}

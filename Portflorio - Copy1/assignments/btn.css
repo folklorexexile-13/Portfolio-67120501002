@@ -1,0 +1,53 @@
+/* จัดการกล่องปุ่ม */
+.nav-buttons-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    position: fixed;
+    top: 3px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    padding: 10px 20px;
+    z-index: 999;
+}
+
+.nav-btn {
+    background-color: rgba(170, 159, 159, 0.542);
+    font-family: "IM Fell English", serif;
+    font-style: italic;
+    letter-spacing: 5px;
+    color: rgb(0, 0, 0);
+    font-size: 10px;
+    padding: 10px 30px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    min-width: 120px;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.nav-btn:hover {
+    transform: translateY(-5px);
+    filter: drop-shadow(0 5px 10px rgba(255, 236, 151, 0.6));
+}
+
+/*หน้าจอมือถือ */
+/*หน้าจอมือถือ */
+@media (max-width: 650px) {
+    .nav-buttons-container {
+        flex-direction: row; /* เปลี่ยนกลับเป็นแนวนอน จะได้ไม่กินพื้นที่แนวตั้ง */
+        gap: 8px; /* ลดช่องว่างระหว่างปุ่ม */
+        width: 100%; /* ให้กล่องครอบเต็มความกว้างจอ */
+        padding: 10px 5px; /* ลด padding รอบๆ กล่องลง */
+    }
+
+    .nav-btn {
+        width: auto; /* ยกเลิกการบังคับกว้าง 80% */
+        min-width: 0; /* 🔥 สำคัญ: ปลดล็อค min-width: 120px จากหน้าจอหลัก เพื่อให้ปุ่มหดตัวได้ */
+        padding: 8px 12px; /* ลดความหนาและความกว้างของปุ่มลง */
+        font-size: 10px; /* ขนาดตัวอักษร 10px กำลังดีแล้ว */
+        letter-spacing: 2px; /* ลดระยะห่างตัวอักษรลง เพื่อประหยัดพื้นที่แนวนอน */
+    }
+}

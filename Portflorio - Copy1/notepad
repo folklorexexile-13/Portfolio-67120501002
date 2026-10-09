@@ -1,0 +1,11 @@
+<div class="contact-wrapper">
+            <div class="contact-box">
+                <a href="https://www.facebook.com" target="_blank" class="contact-btn fb-btn">Facebook</a>
+            </div>
+            <div class="contact-box">
+                <a href="https://www.instagram.com" target="_blank" class="contact-btn ig-btn">Instagram</a>
+            </div>
+        </div>
+        <div id="backbtn">
+			<a href="secondpage.html" target="_blank" class="contact-btn backbtn">previous</a>
+			</div>

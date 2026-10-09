@@ -1,0 +1,212 @@
+/* =============================================================================
+   MDT312 Assignment 7: Square Game Styling
+   ตกแต่งให้สวยงาม สะอาดตา และ User-Friendly ตามเกณฑ์การให้คะแนน
+   ============================================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Kanit', sans-serif;
+    /* เปลี่ยนพื้นหลังให้มีลูกเล่นสไลต์ Modern Mesh Gradient เบาๆ */
+    background: linear-gradient(135deg, #e2e8f0 0%, #f8fafc 50%, #dbeafe 100%);
+    min-height: 100vh;
+    padding: 40px 15px;
+    color: #334e68;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Control Panel - Glassmorphism Style */
+fieldset {
+    width: 100%;
+    max-width: 580px;
+    /* ทำพื้นหลังกึ่งโปร่งใสและเบลอ */
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.07);
+    padding: 25px 30px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+legend {
+    font-weight: 600;
+    font-size: 1.25rem;
+    color: #1e3a8a;
+    padding: 5px 15px;
+    background: #dbeafe;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+input[type="text"] {
+    width: 80px;
+    padding: 10px 12px;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-family: inherit;
+    text-align: center;
+    outline: none;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+input[type="text"]:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+select {
+    padding: 10px 16px;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-family: inherit;
+    background-color: rgba(255, 255, 255, 0.9);
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+select:focus {
+    border-color: #3b82f6;
+}
+
+button#start {
+    padding: 10px 24px;
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+button#start:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
+    background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+}
+
+button#start:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(37, 99, 235, 0.3);
+}
+
+/* Timer Display */
+#timerClock {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #475569;
+    margin-left: auto;
+}
+
+#clock {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 48px;
+    height: 40px;
+    background: #fee2e2;
+    color: #ef4444;
+    font-weight: 700;
+    font-size: 1.25rem;
+    border-radius: 10px;
+    border: 2px solid #fecaca;
+    padding: 0 10px;
+    box-shadow: inset 0 2px 4px rgba(239, 68, 68, 0.1);
+}
+
+/* Play Area Container */
+#container {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+#layer {
+    position: relative;
+    width: 500px;
+    height: 500px;
+    background-color: #ffffff;
+    /* เพิ่ม Grid ลายจุดให้กระดานดูมีลูกเล่น */
+    background-image: radial-gradient(#cbd5e1 1.5px, transparent 1.5px);
+    background-size: 25px 25px;
+    
+    border: 4px solid #cbd5e1;
+    border-radius: 16px;
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.08),
+        inset 0 4px 12px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+/* Square Elements with Pop-in Animation */
+@keyframes popIn {
+    0% { transform: scale(0) rotate(-15deg); opacity: 0; }
+    70% { transform: scale(1.15) rotate(5deg); opacity: 1; }
+    100% { transform: scale(1) rotate(0); opacity: 1; }
+}
+
+/* Square Elements with Pop-in Animation */
+.square {
+    position: absolute;
+    width: 30px; /* ปรับให้ใหญ่ขึ้นนิดนึงให้กดง่าย (User-Friendly) */
+    height: 30px;
+    border: 2px solid rgba(255, 255, 255, 0.5); /* ขอบขาวให้ดูเด่น */
+    border-radius: 8px; /* มุมมนขึ้น */
+    cursor: pointer; /* เอาสกินเมาส์ออก กลับเป็นรูปมือปกติ */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+    
+    /* เรียกใช้ Animation ตอนเกิด */
+    animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    transition: transform 0.15s ease, filter 0.15s ease, opacity 0.15s;
+}
+
+.square:hover {
+    transform: scale(1.3) !important;
+    filter: brightness(1.2) contrast(1.2);
+    z-index: 10;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.square:active {
+    transform: scale(0.8) !important;
+    opacity: 0.5;
+}
+
+/* Colors - ปรับสีให้ดูมีมิติด้วย Gradient */
+.maroon {
+    background: linear-gradient(135deg, #ef4444 0%, #991b1b 100%);
+}
+
+.lightgreen {
+    background: linear-gradient(135deg, #4ade80 0%, #166534 100%);
+}
+
+.magenta {
+    background: linear-gradient(135deg, #e879f9 0%, #86198f 100%);
+}

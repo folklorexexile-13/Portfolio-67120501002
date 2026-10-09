@@ -1,0 +1,154 @@
+img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    
+}
+
+.textbox {
+    display: flex;
+    align-items: flex-start; /* ให้ข้อความและรูปชิดด้านบน */
+    justify-content: space-between; /* ดันข้อความไปซ้าย รูปไปขวา */
+    gap: 30px; /* เพิ่มช่องว่างระหว่างข้อความกับรูปภาพ */
+}
+
+.instruction-text {
+    flex: 1; /* ให้ข้อความขยายเต็มพื้นที่ที่เหลือ */
+    text-align: left;
+}
+
+.picflex {
+    flex-basis: 40%; /* กำหนดให้กล่องรูปกินพื้นที่ประมาณ 40% ของความกว้าง */
+    max-width: 350px;
+    display: flex;
+    justify-content: center; /* จัดรูปให้อยู่กึ่งกลางกล่องตัวเอง */
+}
+
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    width: 90%;
+    margin: 0 auto;
+}
+
+#source{
+	grid-column: 1 / span 2;
+}
+#menu{
+	grid-column: 1 / span 2;
+}
+#header{
+	grid-column: 1 / span 2;
+}
+#content1 { 
+	grid-column: 1 / span 1;
+ }
+#content2 { 
+	grid-column: 2 / span 1;
+ }
+#menu {
+	grid-column: 1 / span 2;
+}
+
+.grid-container > div{
+	font-family: 'Times New Roman', Times, serif;
+	font-weight: bold;
+	text-align: center;
+    background: rgba(182, 159, 159, 0.88);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    border-bottom:  5px solid rgba(3, 3, 3, 0.6);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.grid-container > div img{
+	text-align: center;
+	width: 100%;
+}
+/* 1. ใส่ transition ที่ตัวรูปปกติก่อน เพื่อให้ตอนซูมมันค่อยๆ ขยาย ไม่กระตุก */
+#pizzaimg {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s ease; /* เพิ่มบรรทัดนี้ */
+}
+
+.hover-img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s ease, filter 0.3s ease; /* เพิ่ม filter เข้าไปใน transition ด้วย */
+}
+.hover-img:hover {
+    transform: scale(1.15) rotate(4deg);
+    filter: drop-shadow(0 8px 16px rgba(49, 130, 206, 0.35));
+}
+
+#header{
+	font-size: 35px;
+}
+#menu, #main, #footer, #content1, #content2, #Instructions{
+	background-color: rgb(240, 231, 231);
+	text-align: left;
+}
+
+
+ #main{
+	text-align: center;
+	text-decoration: underline
+	
+ }
+ ul,ol{
+	font-weight: lighter;
+ }
+	
+
+@media only screen and (max-width: 768px) {
+    
+    #content1, #content2 { 
+        grid-column: 1 / span 2;
+    }
+    
+    
+    .textbox {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    
+    .picflex {
+        flex-basis: 100%;
+        max-width: 100%;
+        margin-top: 20px;
+    }
+}
+
+/* สำหรับมือถือ เช่น Samsung A51 (หน้าจอไม่เกิน 480px) */
+@media only screen and (max-width: 480px) {
+    
+    .grid-container {
+        width: 95%;
+        gap: 12px;
+    }
+    
+    
+    .grid-container > div {
+        padding: 15px;
+    }
+    
+    
+    #header {
+        font-size: 26px;
+    }
+    
+    
+    ul, ol {
+        padding-left: 20px;
+        text-align: left;
+    }
+}
